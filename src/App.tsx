@@ -46,8 +46,6 @@ const residents: Resident[] = [
 ];
 
 function App() {
-  const firstResident = residents[0];
-
   return (
     <div className="app">
       <header className="page-header">
@@ -55,20 +53,24 @@ function App() {
         <p>마을 주민 관리 화면을 만들어봅니다.</p>
       </header>
 
-      <section className="resident-card">
-        <div className="resident-card__header">
-          <h2>{firstResident.name}</h2>
-          <span>{firstResident.status}</span>
-        </div>
-
-        <div className="resident-card__body">
-          <p>구역: {firstResident.area}</p>
-          <p>역할: {firstResident.role}</p>
-          <p>등급: {firstResident.level}</p>
-          <p>검토상태: {firstResident.reviewStatus}</p>
-          <p>등록일: {firstResident.registeredAt}</p>
-        </div>
-      </section>
+      <div className="resident-list">
+        {residents.map((resident) => (
+          <section className="resident-card" key={resident.id}>
+            {/* React 에서 목록을 만들 때는 반복되는 각 요소에 key 를 줘야 함 */}
+            <div className="resident-card__header">
+              <h2>{resident.name}</h2>
+              <span>{resident.status}</span>
+            </div>
+            <div className="resident-card__body">
+              <p>구역: {resident.area}</p>
+              <p>역할: {resident.role}</p>
+              <p>등급: {resident.level}</p>
+              <p>검토상태: {resident.reviewStatus}</p>
+              <p>등록일: {resident.registeredAt}</p>
+            </div>
+          </section>
+        ))}
+      </div>
     </div>
   );
 }
