@@ -45,6 +45,20 @@ const residents: Resident[] = [
   },
 ];
 
+const getStatusClassName = (status: string) => {
+  if (status === "활동중") {
+    return "status-badge--active";
+  }
+  if (status === "휴식중") {
+    return "status-badge--rest";
+  }
+  if (status === "대기중") {
+    return "status-badge--wating";
+  }
+
+  return "";
+};
+
 function App() {
   return (
     <div className="app">
@@ -59,7 +73,11 @@ function App() {
             {/* React 에서 목록을 만들 때는 반복되는 각 요소에 key 를 줘야 함 */}
             <div className="resident-card__header">
               <h2>{resident.name}</h2>
-              <span>{resident.status}</span>
+              <span
+                className={`status-badge ${getStatusClassName(resident.status)}`}
+              >
+                {resident.status}
+              </span>
             </div>
             <div className="resident-card__body">
               <p>구역: {resident.area}</p>

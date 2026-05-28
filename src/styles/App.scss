@@ -32,12 +32,6 @@
     h2 {
       font-size: 24px;
     }
-
-    span {
-      padding: 4px 10px;
-      border-radius: 999px;
-      background-color: #e8f5e9;
-    }
   }
 
   &__body {
@@ -46,5 +40,25 @@
       color: #333;
       font-size: 15px;
     }
+  }
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background-color: #e8f5e9;
+  font-size: 13px;
+
+  &--active {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+  }
+  &--rest {
+    background-color: #eef3ff;
+    color: #3156a3;
+  }
+  &--wating {
+    background-color: #fff8e1;
+    color: #8a6d1d;
   }
 }
