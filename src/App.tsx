@@ -1,6 +1,7 @@
 import "./styles/App.scss";
 
 type Resident = {
+  id: number; // 목록을 만들 때는 각 데이터마다 고유값이 필요함, map() 으로 반복 출력할 때 필요함
   name: string;
   area: string;
   role: string;
@@ -10,17 +11,43 @@ type Resident = {
   registeredAt: string;
 };
 
-const resident: Resident = {
-  name: "모리",
-  area: "동쪽 마을",
-  role: "정원 관리",
-  level: "숙련",
-  status: "활동중",
-  reviewStatus: "확인대기",
-  registeredAt: "2026-05-28",
-};
+// residents 는 Resident 타입 객체들이 들어있는 배열이다
+const residents: Resident[] = [
+  {
+    id: 1,
+    name: "모리",
+    area: "동쪽 마을",
+    role: "정원 관리",
+    level: "숙련",
+    status: "활동중",
+    reviewStatus: "확인대기",
+    registeredAt: "2026-05-28",
+  },
+  {
+    id: 2,
+    name: "루나",
+    area: "서쪽 마을",
+    role: "도서 관리",
+    level: "일반",
+    status: "휴식중",
+    reviewStatus: "확인완료",
+    registeredAt: "2026-05-21",
+  },
+  {
+    id: 3,
+    name: "토리",
+    area: "남쪽 마을",
+    role: "창고 정리",
+    level: "초급",
+    status: "대기중",
+    reviewStatus: "확인대기",
+    registeredAt: "2026-05-18",
+  },
+];
 
 function App() {
+  const firstResident = residents[0];
+
   return (
     <div className="app">
       <header className="page-header">
@@ -30,16 +57,16 @@ function App() {
 
       <section className="resident-card">
         <div className="resident-card__header">
-          <h2>{resident.name}</h2>
-          <span>{resident.status}</span>
+          <h2>{firstResident.name}</h2>
+          <span>{firstResident.status}</span>
         </div>
 
         <div className="resident-card__body">
-          <p>구역: {resident.area}</p>
-          <p>역할: {resident.role}</p>
-          <p>등급: {resident.level}</p>
-          <p>검토상태: {resident.reviewStatus}</p>
-          <p>등록일: {resident.registeredAt}</p>
+          <p>구역: {firstResident.area}</p>
+          <p>역할: {firstResident.role}</p>
+          <p>등급: {firstResident.level}</p>
+          <p>검토상태: {firstResident.reviewStatus}</p>
+          <p>등록일: {firstResident.registeredAt}</p>
         </div>
       </section>
     </div>
