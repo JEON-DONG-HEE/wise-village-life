@@ -1,0 +1,52 @@
+.app {
+  min-height: 100vh;
+  padding: 40px;
+  background-color: #f4f6f8;
+}
+
+.page-header {
+  margin-bottom: 24px;
+
+  h1 {
+    margin: 0 0 8px;
+    font-size: 32px;
+  }
+  p {
+    margin: 0;
+    color: #666;
+  }
+}
+
+.resident-card {
+  width: 360px;
+  padding: 20px;
+  border-radius: 16px;
+  background-color: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+
+    h2 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    span {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background-color: #e8f5e9;
+    }
+  }
+
+  &__body {
+    p {
+      margin: 8px 0;
+      color: #333;
+      font-size: 15px;
+    }
+  }
+}
