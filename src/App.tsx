@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./styles/App.scss";
 
 type ResidentStatus = "활동중" | "휴식중" | "대기중"; // 세가지 값만 들어올 수 있다. 유니온 타입이라고 함
@@ -77,6 +78,11 @@ const getReviewClassName = (reviewStatus: ReviewStatus) => {
 };
 
 function App() {
+  const [keyword, setKeyword] = useState("");
+  const filteredResidents = residents.filter((resident) =>
+    resident.name.includes(keyword),
+  ); // residents 배열에서 resident.name 에 keyword 가 포함된 주민만 남긴다
+
   return (
     <div className="app">
       <header className="page-header">
@@ -84,8 +90,17 @@ function App() {
         <p>마을 주민 관리 화면을 만들어봅니다.</p>
       </header>
 
+      <div className="search-area">
+        <input
+          type="text"
+          placeholder="주민명을 검색하세요"
+          value={keyword}
+          onChange={(event) => setKeyword(event.target.value)}
+        />
+      </div>
+
       <div className="resident-list">
-        {residents.map((resident) => (
+        {filteredResidents.map((resident) => (
           <section className="resident-card" key={resident.id}>
             {/* React 에서 목록을 만들 때는 반복되는 각 요소에 key 를 줘야 함 */}
             <div className="resident-card__header">
