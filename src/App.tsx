@@ -1,13 +1,16 @@
 import "./styles/App.scss";
 
+type ResidentStatus = "활동중" | "휴식중" | "대기중"; // 세가지 값만 들어올 수 있다. 유니온 타입이라고 함
+type ReviewStatus = "확인대기" | "확인완료" | "반려";
+
 type Resident = {
   id: number; // 목록을 만들 때는 각 데이터마다 고유값이 필요함, map() 으로 반복 출력할 때 필요함
   name: string;
   area: string;
   role: string;
   level: string;
-  status: string;
-  reviewStatus: string;
+  status: ResidentStatus;
+  reviewStatus: ReviewStatus;
   registeredAt: string;
 };
 
@@ -40,12 +43,12 @@ const residents: Resident[] = [
     role: "창고 정리",
     level: "초급",
     status: "대기중",
-    reviewStatus: "확인대기",
+    reviewStatus: "반려",
     registeredAt: "2026-05-18",
   },
 ];
 
-const getStatusClassName = (status: string) => {
+const getStatusClassName = (status: ResidentStatus) => {
   if (status === "활동중") {
     return "status-badge--active";
   }
@@ -53,7 +56,7 @@ const getStatusClassName = (status: string) => {
     return "status-badge--rest";
   }
   if (status === "대기중") {
-    return "status-badge--wating";
+    return "status-badge--waiting";
   }
 
   return "";
