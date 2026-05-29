@@ -98,36 +98,42 @@ function App() {
           onChange={(event) => setKeyword(event.target.value)}
         />
       </div>
-
-      <div className="resident-list">
-        {filteredResidents.map((resident) => (
-          <section className="resident-card" key={resident.id}>
-            {/* React 에서 목록을 만들 때는 반복되는 각 요소에 key 를 줘야 함 */}
-            <div className="resident-card__header">
-              <h2>{resident.name}</h2>
-              <span
-                className={`status-badge ${getStatusClassName(resident.status)}`}
-              >
-                {resident.status}
-              </span>
-            </div>
-            <div className="resident-card__body">
-              <p>구역: {resident.area}</p>
-              <p>역할: {resident.role}</p>
-              <p>등급: {resident.level}</p>
-              <p>
-                검토상태:{" "}
+      {filteredResidents.length > 0 ? (
+        <div className="resident-list">
+          {filteredResidents.map((resident) => (
+            <section className="resident-card" key={resident.id}>
+              {/* React 에서 목록을 만들 때는 반복되는 각 요소에 key 를 줘야 함 */}
+              <div className="resident-card__header">
+                <h2>{resident.name}</h2>
                 <span
-                  className={`review-badge ${getReviewClassName(resident.reviewStatus)}`}
+                  className={`status-badge ${getStatusClassName(resident.status)}`}
                 >
-                  {resident.reviewStatus}
+                  {resident.status}
                 </span>
-              </p>
-              <p>등록일: {resident.registeredAt}</p>
-            </div>
-          </section>
-        ))}
-      </div>
+              </div>
+              <div className="resident-card__body">
+                <p>구역: {resident.area}</p>
+                <p>역할: {resident.role}</p>
+                <p>등급: {resident.level}</p>
+                <p>
+                  검토상태:{" "}
+                  <span
+                    className={`review-badge ${getReviewClassName(resident.reviewStatus)}`}
+                  >
+                    {resident.reviewStatus}
+                  </span>
+                </p>
+                <p>등록일: {resident.registeredAt}</p>
+              </div>
+            </section>
+          ))}
+        </div>
+      ) : (
+        <div className="empty-message">
+          <strong>검색 결과가 없습니다.</strong>
+          <p>다른 주민명을 입력해보세요.</p>
+        </div>
+      )}
     </div>
   );
 }
