@@ -62,6 +62,20 @@ const getStatusClassName = (status: ResidentStatus) => {
   return "";
 };
 
+const getReviewClassName = (reviewStatus: ReviewStatus) => {
+  if (reviewStatus === "확인대기") {
+    return "review-badge--pending";
+  }
+  if (reviewStatus === "확인완료") {
+    return "review-badge--complete";
+  }
+  if (reviewStatus === "반려") {
+    return "review-badge--rejected";
+  }
+
+  return "";
+};
+
 function App() {
   return (
     <div className="app">
@@ -86,7 +100,14 @@ function App() {
               <p>구역: {resident.area}</p>
               <p>역할: {resident.role}</p>
               <p>등급: {resident.level}</p>
-              <p>검토상태: {resident.reviewStatus}</p>
+              <p>
+                검토상태:{" "}
+                <span
+                  className={`review-badge ${getReviewClassName(resident.reviewStatus)}`}
+                >
+                  {resident.reviewStatus}
+                </span>
+              </p>
               <p>등록일: {resident.registeredAt}</p>
             </div>
           </section>
