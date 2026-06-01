@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./styles/App.scss";
 
 type ResidentStatus = "활동중" | "휴식중" | "대기중"; // 세가지 값만 들어올 수 있다. 유니온 타입이라고 함
+type FilterStatus = "전체" | ResidentStatus;
 type ReviewStatus = "확인대기" | "확인완료" | "반려";
 
 type Resident = {
@@ -49,6 +50,8 @@ const residents: Resident[] = [
   },
 ];
 
+const statusFilters: FilterStatus[] = ["전체", "활동중", "휴식중", "대기중"];
+
 const getStatusClassName = (status: ResidentStatus) => {
   if (status === "활동중") {
     return "status-badge--active";
@@ -79,9 +82,14 @@ const getReviewClassName = (reviewStatus: ReviewStatus) => {
 
 function App() {
   const [keyword, setKeyword] = useState("");
-  const filteredResidents = residents.filter((resident) =>
-    resident.name.includes(keyword),
-  ); // residents 배열에서 resident.name 에 keyword 가 포함된 주민만 남긴다
+  const [selectedStatus, setSelectedStatus] = useState<FilterStatus>("전체");
+  const filteredResidents = residents.filter((resident) => {
+    const isMatchedKeyword = resident.name.includes(keyword);
+    const isMatchedStatus =
+      selectedStatus === "전체" || resident.status === selectedStatus;
+
+    return isMatchedKeyword && isMatchedStatus;
+  });
 
   return (
     <div className="app">
@@ -98,6 +106,20 @@ function App() {
           onChange={(event) => setKeyword(event.target.value)}
         />
       </div>
+
+      <div className="filter-area">
+        {statusFilters.map((status) => (
+          <button
+            key={status}
+            type="button"
+            className={selectedStatus === status ? "is-active" : ""}
+            onClick={() => setSelectedStatus(status)}
+          >
+            {status}
+          </button>
+        ))}
+      </div>
+
       {filteredResidents.length > 0 ? (
         <div className="resident-list">
           {filteredResidents.map((resident) => (

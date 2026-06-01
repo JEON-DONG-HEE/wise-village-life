@@ -123,3 +123,28 @@
     font-size: 14px;
   }
 }
+
+// 필터 버튼
+.filter-area {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+
+  button {
+    height: 36px;
+    padding: 0 14px;
+    border: 1px solid #d6dbe1;
+    border-radius: 999px;
+    background-color: #fff;
+    color: #555;
+    font-size: 14px;
+    cursor: pointer;
+
+    &.is-active {
+      border-color: #4f7cff;
+      background-color: #4f7cff;
+      color: #fff;
+      font-weight: 600;
+    }
+  }
+}
