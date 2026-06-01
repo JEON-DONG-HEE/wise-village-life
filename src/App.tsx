@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./styles/App.scss";
+import ResidentCard from "./components/ResidentCard";
 
 type ResidentStatus = "활동중" | "휴식중" | "대기중"; // 세가지 값만 들어올 수 있다. 유니온 타입이라고 함
 type FilterStatus = "전체" | ResidentStatus;
@@ -52,34 +53,6 @@ const residents: Resident[] = [
 
 const statusFilters: FilterStatus[] = ["전체", "활동중", "휴식중", "대기중"];
 
-const getStatusClassName = (status: ResidentStatus) => {
-  if (status === "활동중") {
-    return "status-badge--active";
-  }
-  if (status === "휴식중") {
-    return "status-badge--rest";
-  }
-  if (status === "대기중") {
-    return "status-badge--waiting";
-  }
-
-  return "";
-};
-
-const getReviewClassName = (reviewStatus: ReviewStatus) => {
-  if (reviewStatus === "확인대기") {
-    return "review-badge--pending";
-  }
-  if (reviewStatus === "확인완료") {
-    return "review-badge--complete";
-  }
-  if (reviewStatus === "반려") {
-    return "review-badge--rejected";
-  }
-
-  return "";
-};
-
 function App() {
   const [keyword, setKeyword] = useState("");
   const [selectedStatus, setSelectedStatus] = useState<FilterStatus>("전체");
@@ -123,31 +96,7 @@ function App() {
       {filteredResidents.length > 0 ? (
         <div className="resident-list">
           {filteredResidents.map((resident) => (
-            <section className="resident-card" key={resident.id}>
-              {/* React 에서 목록을 만들 때는 반복되는 각 요소에 key 를 줘야 함 */}
-              <div className="resident-card__header">
-                <h2>{resident.name}</h2>
-                <span
-                  className={`status-badge ${getStatusClassName(resident.status)}`}
-                >
-                  {resident.status}
-                </span>
-              </div>
-              <div className="resident-card__body">
-                <p>구역: {resident.area}</p>
-                <p>역할: {resident.role}</p>
-                <p>등급: {resident.level}</p>
-                <p>
-                  검토상태:{" "}
-                  <span
-                    className={`review-badge ${getReviewClassName(resident.reviewStatus)}`}
-                  >
-                    {resident.reviewStatus}
-                  </span>
-                </p>
-                <p>등록일: {resident.registeredAt}</p>
-              </div>
-            </section>
+            <ResidentCard key={resident.id} resident={resident} />
           ))}
         </div>
       ) : (
