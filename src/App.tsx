@@ -2,6 +2,8 @@ import { useState } from "react";
 import ResidentCard from "./components/ResidentCard";
 import SearchBox from "./components/SearchBox";
 import StatusFilter from "./components/StatusFilter";
+import EmptyMessage from "./components/EmptyMessage";
+
 import { residents } from "./data/residents";
 import type { FilterStatus } from "./types/resident";
 import "./styles/App.scss";
@@ -39,10 +41,7 @@ function App() {
           ))}
         </div>
       ) : (
-        <div className="empty-message">
-          <strong>검색 결과가 없습니다.</strong>
-          <p>다른 주민명을 입력해보세요.</p>
-        </div>
+        <EmptyMessage />
       )}
     </div>
   );
