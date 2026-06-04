@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ResidentCard from "./components/ResidentCard";
 import SearchBox from "./components/SearchBox";
+import StatusFilter from "./components/StatusFilter";
 import { residents } from "./data/residents";
 import type { FilterStatus } from "./types/resident";
 import "./styles/App.scss";
@@ -26,28 +27,10 @@ function App() {
       </header>
 
       <SearchBox keyword={keyword} onChangekeyword={setKeyword} />
-
-      {/* <div className="search-area">
-        <input
-          type="text"
-          placeholder="주민명을 검색하세요"
-          value={keyword}
-          onChange={(event) => setKeyword(event.target.value)}
-        />
-      </div> */}
-
-      <div className="filter-area">
-        {statusFilters.map((status) => (
-          <button
-            key={status}
-            type="button"
-            className={selectedStatus === status ? "is-active" : ""}
-            onClick={() => setSelectedStatus(status)}
-          >
-            {status}
-          </button>
-        ))}
-      </div>
+      <StatusFilter
+        selectedStatus={selectedStatus}
+        onChangeStatus={setSelectedStatus}
+      />
 
       {filteredResidents.length > 0 ? (
         <div className="resident-list">
