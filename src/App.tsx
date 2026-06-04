@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ResidentCard from "./components/ResidentCard";
+import SearchBox from "./components/SearchBox";
 import { residents } from "./data/residents";
 import type { FilterStatus } from "./types/resident";
 import "./styles/App.scss";
@@ -24,14 +25,16 @@ function App() {
         <p>마을 주민 관리 화면을 만들어봅니다.</p>
       </header>
 
-      <div className="search-area">
+      <SearchBox keyword={keyword} onChangekeyword={setKeyword} />
+
+      {/* <div className="search-area">
         <input
           type="text"
           placeholder="주민명을 검색하세요"
           value={keyword}
           onChange={(event) => setKeyword(event.target.value)}
         />
-      </div>
+      </div> */}
 
       <div className="filter-area">
         {statusFilters.map((status) => (
