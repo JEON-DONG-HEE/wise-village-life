@@ -36,13 +36,8 @@ function App() {
       />
 
       {filteredResidents.length > 0 ? (
-        <ResidentList />
+        <ResidentList residents={filteredResidents} />
       ) : (
-        // <div className="resident-list">
-        //   {filteredResidents.map((resident) => (
-        //     <ResidentCard key={resident.id} resident={resident} />
-        //   ))}
-        // </div>
         <EmptyMessage />
       )}
     </div>
