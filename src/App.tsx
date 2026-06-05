@@ -3,6 +3,7 @@ import ResidentCard from "./components/ResidentCard";
 import SearchBox from "./components/SearchBox";
 import StatusFilter from "./components/StatusFilter";
 import EmptyMessage from "./components/EmptyMessage";
+import ResidentList from "./components/ResidentList";
 
 import { residents } from "./data/residents";
 import type { FilterStatus } from "./types/resident";
@@ -35,12 +36,13 @@ function App() {
       />
 
       {filteredResidents.length > 0 ? (
-        <div className="resident-list">
-          {filteredResidents.map((resident) => (
-            <ResidentCard key={resident.id} resident={resident} />
-          ))}
-        </div>
+        <ResidentList />
       ) : (
+        // <div className="resident-list">
+        //   {filteredResidents.map((resident) => (
+        //     <ResidentCard key={resident.id} resident={resident} />
+        //   ))}
+        // </div>
         <EmptyMessage />
       )}
     </div>
