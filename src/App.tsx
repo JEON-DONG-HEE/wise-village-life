@@ -1,20 +1,21 @@
 import { useState } from "react";
 import SearchBox from "./components/SearchBox";
 import StatusFilter from "./components/StatusFilter";
+import AreaFilter from "./components/AreaFilter";
 import EmptyMessage from "./components/EmptyMessage";
 import ResidentList from "./components/ResidentList";
 
 import { residents } from "./data/residents";
-import type { AreaFilter, FilterStatus } from "./types/resident";
+import type { AreaFilterType, FilterStatus } from "./types/resident";
 import "./styles/App.scss";
 
 const statusFilters: FilterStatus[] = ["전체", "활동중", "휴식중", "대기중"];
-const areaFilters: AreaFilter[] = ["전체", "동쪽 마을", "서쪽 마을", "남쪽 마을"]; // prettier-ignore
+const areaFilters: AreaFilterType[] = ["전체", "동쪽 마을", "서쪽 마을", "남쪽 마을"]; // prettier-ignore
 
 function App() {
   const [keyword, setKeyword] = useState("");
   const [selectedStatus, setSelectedStatus] = useState<FilterStatus>("전체");
-  const [selectedArea, setSelectedArea] = useState<AreaFilter>("전체");
+  const [selectedArea, setSelectedArea] = useState<AreaFilterType>("전체");
 
   const filteredResidents = residents.filter((resident) => {
     const isMatchedKeyword = resident.name.includes(keyword);
@@ -39,7 +40,9 @@ function App() {
         onChangeStatus={setSelectedStatus}
       />
 
-      <div className="filter-area">
+      <AreaFilter />
+
+      {/* <div className="filter-area">
         {areaFilters.map((area) => (
           <button
             key={area}
@@ -50,7 +53,7 @@ function App() {
             {area}
           </button>
         ))}
-      </div>
+      </div> */}
 
       {filteredResidents.length > 0 ? (
         <ResidentList residents={filteredResidents} />
