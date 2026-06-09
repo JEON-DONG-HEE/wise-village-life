@@ -37,6 +37,10 @@ function App() {
       <StatusFilter selectedStatus={selectedStatus} onChangeStatus={setSelectedStatus} />
       <AreaFilter selectedArea={selectedArea} onChangeArea={setSelectedArea} />
 
+      <div className="result-summary">
+        총 {residents.length} 명 중 {filteredResidents.length}
+      </div>
+
       {filteredResidents.length > 0 ? (
         <ResidentList residents={filteredResidents} />
       ) : (
