@@ -14,8 +14,9 @@ function App() {
   const [selectedStatus, setSelectedStatus] = useState<FilterStatus>("전체");
   const [selectedArea, setSelectedArea] = useState<AreaFilterType>("전체");
 
+  const trimmedKeyword = keyword.trim(); // 검색어에 공백만 있을 경우 예외처리
   const filteredResidents = residents.filter((resident) => {
-    const isMatchedKeyword = resident.name.includes(keyword);
+    const isMatchedKeyword = resident.name.includes(trimmedKeyword);
     const isMatchedStatus =
       selectedStatus === "전체" || resident.status === selectedStatus;
     const isMatchedArea =
