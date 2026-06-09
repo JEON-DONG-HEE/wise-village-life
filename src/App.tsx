@@ -41,6 +41,11 @@ function App() {
         총 {residents.length} 명 중 {filteredResidents.length}
       </div>
 
+      <div className="filter-summary">
+        검색어: {trimmedKeyword || "없음"} / 상태: {selectedStatus} / 구역:{" "}
+        {selectedArea}
+      </div>
+
       {filteredResidents.length > 0 ? (
         <ResidentList residents={filteredResidents} />
       ) : (
