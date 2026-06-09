@@ -9,9 +9,6 @@ import { residents } from "./data/residents";
 import type { AreaFilterType, FilterStatus } from "./types/resident";
 import "./styles/App.scss";
 
-const statusFilters: FilterStatus[] = ["전체", "활동중", "휴식중", "대기중"];
-const areaFilters: AreaFilterType[] = ["전체", "동쪽 마을", "서쪽 마을", "남쪽 마을"]; // prettier-ignore
-
 function App() {
   const [keyword, setKeyword] = useState("");
   const [selectedStatus, setSelectedStatus] = useState<FilterStatus>("전체");
@@ -35,25 +32,9 @@ function App() {
       </header>
 
       <SearchBox keyword={keyword} onChangekeyword={setKeyword} />
-      <StatusFilter
-        selectedStatus={selectedStatus}
-        onChangeStatus={setSelectedStatus}
-      />
-
-      <AreaFilter />
-
-      {/* <div className="filter-area">
-        {areaFilters.map((area) => (
-          <button
-            key={area}
-            type="button"
-            className={selectedArea === area ? "is-active" : ""}
-            onClick={() => setSelectedArea(area)}
-          >
-            {area}
-          </button>
-        ))}
-      </div> */}
+      {/* prettier-ignore */}
+      <StatusFilter selectedStatus={selectedStatus} onChangeStatus={setSelectedStatus} />
+      <AreaFilter selectedArea={selectedArea} onChangeArea={setSelectedArea} />
 
       {filteredResidents.length > 0 ? (
         <ResidentList residents={filteredResidents} />
