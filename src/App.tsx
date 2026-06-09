@@ -15,6 +15,16 @@ function App() {
   const [selectedArea, setSelectedArea] = useState<AreaFilterType>("전체");
 
   const trimmedKeyword = keyword.trim(); // 검색어에 공백만 있을 경우 예외처리
+  const handleResetFilters = () => {
+    setKeyword("");
+    setSelectedStatus("전체");
+    setSelectedArea("전체");
+  };
+  const isFiltered =
+    trimmedKeyword !== "" ||
+    selectedStatus !== "전체" ||
+    selectedArea !== "전체";
+
   const filteredResidents = residents.filter((resident) => {
     const isMatchedKeyword = resident.name.includes(trimmedKeyword);
     const isMatchedStatus =
@@ -45,6 +55,16 @@ function App() {
         검색어: {trimmedKeyword || "없음"} / 상태: {selectedStatus} / 구역:{" "}
         {selectedArea}
       </div>
+
+      {isFiltered && (
+        <button
+          type="button"
+          className="reset-filter-button"
+          onClick={handleResetFilters}
+        >
+          필터 초기화
+        </button>
+      )}
 
       {filteredResidents.length > 0 ? (
         <ResidentList residents={filteredResidents} />
