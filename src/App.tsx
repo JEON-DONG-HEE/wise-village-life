@@ -48,10 +48,18 @@ function App() {
         <p>마을 주민 관리 화면을 만들어봅니다.</p>
       </header>
 
-      <SearchBox keyword={keyword} onChangekeyword={setKeyword} />
-      {/* prettier-ignore */}
-      <StatusFilter selectedStatus={selectedStatus} onChangeStatus={setSelectedStatus} />
-      <AreaFilter selectedArea={selectedArea} onChangeArea={setSelectedArea} />
+      <div className="control-panel">
+        <SearchBox keyword={keyword} onChangekeyword={setKeyword} />
+        <StatusFilter
+          selectedStatus={selectedStatus}
+          onChangeStatus={setSelectedStatus}
+        />
+        <AreaFilter
+          selectedArea={selectedArea}
+          onChangeArea={setSelectedArea}
+        />
+      </div>
+
       <FilterSummary
         totalCount={residents.length}
         filteredCount={filteredResidents.length}

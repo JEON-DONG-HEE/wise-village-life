@@ -132,6 +132,19 @@
   }
 }
 
+// 컨트롤 패널
+.control-panel {
+  margin-bottom: 24px;
+  padding: 20px;
+  border-radius: 16px;
+  background-color: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+
+  .filter-group:last-child {
+    margin-bottom: 0px;
+  }
+}
+
 // 필터 버튼
 .filter-group {
   margin-bottom: 20px;
