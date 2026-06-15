@@ -20,7 +20,7 @@ function FilterSummary({
   onResetFilters,
 }: FilterSummaryProps) {
   return (
-    <>
+    <div className="filter-summary-box">
       <div className="result-summary">
         총 {totalCount} 명 중 {filteredCount}
       </div>
@@ -39,7 +39,7 @@ function FilterSummary({
           필터 초기화
         </button>
       )}
-    </>
+    </div>
   );
 }
 

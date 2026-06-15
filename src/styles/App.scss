@@ -167,6 +167,11 @@
   }
 }
 
+// filter-summary-box
+.filter-summary-box {
+  margin-bottom: 24px;
+}
+
 // result-summary
 .result-summary {
   margin-bottom: 16px;
@@ -176,7 +181,7 @@
 
 // filter-summary
 .filter-summary {
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   color: #777;
   font-size: 13px;
 }
@@ -184,7 +189,6 @@
 // 검색조건 초기화 버튼
 .reset-filter-button {
   height: 34px;
-  margin-bottom: 20px;
   padding: 0 12px;
   border: 1px solid #d6dbe1;
   border-radius: 8px;
