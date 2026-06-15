@@ -4,6 +4,7 @@ import StatusFilter from "./components/StatusFilter";
 import AreaFilter from "./components/AreaFilter";
 import EmptyMessage from "./components/EmptyMessage";
 import ResidentList from "./components/ResidentList";
+import FilterSummary from "./components/FilterSummary";
 
 import { residents } from "./data/residents";
 import type { AreaFilterType, FilterStatus } from "./types/resident";
@@ -60,6 +61,8 @@ function App() {
         검색어: {trimmedKeyword || "없음"} / 상태: {selectedStatus} / 구역:{" "}
         {selectedArea}
       </div>
+
+      <FilterSummary />
 
       {isFiltered && (
         <button
