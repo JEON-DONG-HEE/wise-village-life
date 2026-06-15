@@ -10,20 +10,13 @@ import type { AreaFilterType, FilterStatus } from "./types/resident";
 import "./styles/App.scss";
 
 function App() {
+  // 상태값
   const [keyword, setKeyword] = useState("");
   const [selectedStatus, setSelectedStatus] = useState<FilterStatus>("전체");
   const [selectedArea, setSelectedArea] = useState<AreaFilterType>("전체");
 
+  // 필터 계산
   const trimmedKeyword = keyword.trim(); // 검색어에 공백만 있을 경우 예외처리
-  const handleResetFilters = () => {
-    setKeyword("");
-    setSelectedStatus("전체");
-    setSelectedArea("전체");
-  };
-  const isFiltered =
-    trimmedKeyword !== "" ||
-    selectedStatus !== "전체" ||
-    selectedArea !== "전체";
 
   const filteredResidents = residents.filter((resident) => {
     const isMatchedKeyword = resident.name.includes(trimmedKeyword);
@@ -34,6 +27,18 @@ function App() {
 
     return isMatchedKeyword && isMatchedStatus && isMatchedArea;
   });
+
+  const isFiltered =
+    trimmedKeyword !== "" ||
+    selectedStatus !== "전체" ||
+    selectedArea !== "전체";
+
+  // 이벤트 함수
+  const handleResetFilters = () => {
+    setKeyword("");
+    setSelectedStatus("전체");
+    setSelectedArea("전체");
+  };
 
   return (
     <div className="app">

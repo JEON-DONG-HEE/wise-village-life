@@ -9,17 +9,21 @@ type StatusFilterProps = {
 
 function StatusFilter({ selectedStatus, onChangeStatus }: StatusFilterProps) {
   return (
-    <div className="filter-area">
-      {statusFilters.map((status) => (
-        <button
-          key={status}
-          type="button"
-          className={selectedStatus === status ? "is-active" : ""}
-          onClick={() => onChangeStatus(status)}
-        >
-          {status}
-        </button>
-      ))}
+    <div className="filter-group">
+      <p className="filter-title">활동 상태</p>
+
+      <div className="filter-area">
+        {statusFilters.map((status) => (
+          <button
+            key={status}
+            type="button"
+            className={selectedStatus === status ? "is-active" : ""}
+            onClick={() => onChangeStatus(status)}
+          >
+            {status}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }

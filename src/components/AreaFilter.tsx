@@ -9,17 +9,20 @@ type AreaFilterProps = {
 
 function AreaFilter({ selectedArea, onChangeArea }: AreaFilterProps) {
   return (
-    <div className="filter-area">
-      {areaFilters.map((area) => (
-        <button
-          key={area}
-          type="button"
-          className={selectedArea === area ? "is-active" : ""}
-          onClick={() => onChangeArea(area)}
-        >
-          {area}
-        </button>
-      ))}
+    <div className="filter-group">
+      <p className="filter-title">마을 구역</p>
+      <div className="filter-area">
+        {areaFilters.map((area) => (
+          <button
+            key={area}
+            type="button"
+            className={selectedArea === area ? "is-active" : ""}
+            onClick={() => onChangeArea(area)}
+          >
+            {area}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }

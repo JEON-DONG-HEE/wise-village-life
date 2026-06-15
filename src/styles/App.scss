@@ -89,6 +89,14 @@
 .search-area {
   margin-bottom: 24px;
 
+  label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
   input {
     width: 320px;
     height: 40px;
@@ -125,10 +133,20 @@
 }
 
 // 필터 버튼
+.filter-group {
+  margin-bottom: 20px;
+}
+
+.filter-title {
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 14px;
+  font-weight: 600;
+}
+
 .filter-area {
   display: flex;
   gap: 8px;
-  margin-bottom: 24px;
 
   button {
     height: 36px;
