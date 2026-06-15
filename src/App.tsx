@@ -52,27 +52,15 @@ function App() {
       {/* prettier-ignore */}
       <StatusFilter selectedStatus={selectedStatus} onChangeStatus={setSelectedStatus} />
       <AreaFilter selectedArea={selectedArea} onChangeArea={setSelectedArea} />
-
-      <div className="result-summary">
-        총 {residents.length} 명 중 {filteredResidents.length}
-      </div>
-
-      <div className="filter-summary">
-        검색어: {trimmedKeyword || "없음"} / 상태: {selectedStatus} / 구역:{" "}
-        {selectedArea}
-      </div>
-
-      <FilterSummary />
-
-      {isFiltered && (
-        <button
-          type="button"
-          className="reset-filter-button"
-          onClick={handleResetFilters}
-        >
-          필터 초기화
-        </button>
-      )}
+      <FilterSummary
+        totalCount={residents.length}
+        filteredCount={filteredResidents.length}
+        keyword={trimmedKeyword}
+        selectedStatus={selectedStatus}
+        selectedArea={selectedArea}
+        isFiltered={isFiltered}
+        onResetFilters={handleResetFilters}
+      />
 
       {filteredResidents.length > 0 ? (
         <ResidentList residents={filteredResidents} />
