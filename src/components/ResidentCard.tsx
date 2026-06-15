@@ -2,6 +2,8 @@ import type { Resident, ResidentStatus, ReviewStatus } from "../types/resident";
 
 type ResidentCardProps = {
   resident: Resident;
+  isSelected: boolean;
+  onSelectResident: (residentId: number) => void;
 };
 
 const getStatusClassName = (status: ResidentStatus) => {
@@ -32,9 +34,16 @@ const getReviewClassName = (reviewStatus: ReviewStatus) => {
   return "";
 };
 
-function ResidentCard({ resident }: ResidentCardProps) {
+function ResidentCard({
+  resident,
+  isSelected,
+  onSelectResident,
+}: ResidentCardProps) {
   return (
-    <section className="resident-card">
+    <section
+      className={`resident-card ${isSelected ? "is-selected" : ""}`}
+      onClick={() => onSelectResident(resident.id)}
+    >
       <div className="resident-card__header">
         <h2>{resident.name}</h2>
         <span className={`status-badge ${getStatusClassName(resident.status)}`}>

@@ -41,6 +41,10 @@
       font-size: 15px;
     }
   }
+
+  &.is-selected {
+    outline: 3px solid #4f7cff;
+  }
 }
 
 // 상태 뱃지
@@ -213,4 +217,11 @@
   &:hover {
     background-color: #f0f2f5;
   }
+}
+
+// 주민 선택 on
+.selected-resident {
+  margin-bottom: 16px;
+  color: #555;
+  font-size: 14px;
 }

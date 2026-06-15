@@ -15,6 +15,9 @@ function App() {
   const [keyword, setKeyword] = useState("");
   const [selectedStatus, setSelectedStatus] = useState<FilterStatus>("전체");
   const [selectedArea, setSelectedArea] = useState<AreaFilterType>("전체");
+  const [selectedResidentId, setSelectedResidentId] = useState<number | null>(
+    null,
+  );
 
   // 필터 계산
   const trimmedKeyword = keyword.trim(); // 검색어에 공백만 있을 경우 예외처리
@@ -33,6 +36,10 @@ function App() {
     trimmedKeyword !== "" ||
     selectedStatus !== "전체" ||
     selectedArea !== "전체";
+
+  const selectedResident = residents.find(
+    (resident) => resident.id === selectedResidentId,
+  );
 
   // 이벤트 함수
   const handleResetFilters = () => {
@@ -70,8 +77,16 @@ function App() {
         onResetFilters={handleResetFilters}
       />
 
+      <div className="selected-resident">
+        선택된 주민: {selectedResident ? selectedResident.name : "없음"}
+      </div>
+
       {filteredResidents.length > 0 ? (
-        <ResidentList residents={filteredResidents} />
+        <ResidentList
+          residents={filteredResidents}
+          selectedResidentId={selectedResidentId}
+          onSelectResident={setSelectedResidentId}
+        />
       ) : (
         <EmptyMessage />
       )}
