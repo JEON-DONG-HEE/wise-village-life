@@ -45,6 +45,12 @@ function App() {
     (resident) => resident.id === selectedResidentId, // some : 조건에 맞는 항목이 하나라도 있으면 true 를 반환
   );
 
+  useEffect(() => {
+    if (selectedResidentId !== null && !isSelectedResidentVisible) {
+      setSelectedResidentId(null);
+    }
+  }, [selectedResidentId, isSelectedResidentVisible]);
+
   // 이벤트 함수
   const handleResetFilters = () => {
     setKeyword("");
