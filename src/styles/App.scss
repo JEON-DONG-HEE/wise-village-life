@@ -176,6 +176,11 @@
     flex-direction: column;
     gap: 6px;
   }
+
+  &__empty {
+    color: #777;
+    font-size: 14px;
+  }
 }
 
 // 주민 카드 리스트

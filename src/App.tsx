@@ -96,6 +96,7 @@ function App() {
       <div className="selected-resident">
         <div className="selected-resident__header">
           <strong>선택된 주민</strong>
+
           {selectedResident && (
             <button type="button" onClick={handleClearSelectedResident}>
               선택 해제
@@ -103,9 +104,13 @@ function App() {
           )}
         </div>
 
-        <div className="selected-resident__name">
-          {selectedResident ? selectedResident.name : "없음"}
-        </div>
+        {selectedResident ? (
+          <div className="selected-resident__name">{selectedResident.name}</div>
+        ) : (
+          <p className="selected-resident__empty">
+            주민 카드를 선택하면 상세 정보가 표시됩니다.
+          </p>
+        )}
 
         {selectedResident && (
           <div className="selected-resident__detail">
