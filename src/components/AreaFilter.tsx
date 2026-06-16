@@ -10,8 +10,10 @@ type AreaFilterProps = {
 function AreaFilter({ selectedArea, onChangeArea }: AreaFilterProps) {
   return (
     <div className="filter-group">
-      <p className="filter-title">마을 구역</p>
-      <div className="filter-area">
+      <p id="area-filter-title" className="filter-title">
+        마을 구역
+      </p>
+      <div className="filter-area" aria-labelledby="area-filter-title">
         {areaFilters.map((area) => (
           <button
             key={area}

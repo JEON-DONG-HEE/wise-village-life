@@ -10,9 +10,11 @@ type StatusFilterProps = {
 function StatusFilter({ selectedStatus, onChangeStatus }: StatusFilterProps) {
   return (
     <div className="filter-group">
-      <p className="filter-title">활동 상태</p>
+      <p id="status-filter-title" className="filter-title">
+        활동 상태
+      </p>
 
-      <div className="filter-area">
+      <div className="filter-area" aria-labelledby="status-filter-title">
         {statusFilters.map((status) => (
           <button
             key={status}
