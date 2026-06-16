@@ -94,14 +94,25 @@ function App() {
       />
 
       <div className="selected-resident">
-        <span>
-          선택된 주민: {selectedResident ? selectedResident.name : "없음"}
-        </span>
+        <div className="selected-resident__header">
+          <strong>선택된 주민</strong>
+          {selectedResident && (
+            <button type="button" onClick={handleClearSelectedResident}>
+              선택 해제
+            </button>
+          )}
+        </div>
+
+        <div className="selected-resident__name">
+          {selectedResident ? selectedResident.name : "없음"}
+        </div>
 
         {selectedResident && (
-          <button type="button" onClick={handleClearSelectedResident}>
-            선택 해제
-          </button>
+          <div className="selected-resident__detail">
+            <p>구역 : {selectedResident.area}</p>
+            <p>역할 : {selectedResident.role}</p>
+            <p>상태 : {selectedResident.status}</p>
+          </div>
         )}
       </div>
 
