@@ -56,18 +56,30 @@ function ResidentCard({
           </span>
         </div>
         <div className="resident-card__body">
-          <p>구역: {resident.area}</p>
-          <p>역할: {resident.role}</p>
-          <p>등급: {resident.level}</p>
-          <p>
-            검토상태:{" "}
+          <p className="resident-card__info-row">
+            <span className="resident-card__label">구역</span>
+            <span>{resident.area}</span>
+          </p>
+          <p className="resident-card__info-row">
+            <span className="resident-card__label">역할</span>
+            <span>{resident.role}</span>
+          </p>
+          <p className="resident-card__info-row">
+            <span className="resident-card__label">등급</span>
+            <span>{resident.level}</span>
+          </p>
+          <p className="resident-card__info-row">
+            <span className="resident-card__label">검토상태</span>
             <span
               className={`review-badge ${getReviewClassName(resident.reviewStatus)}`}
             >
               {resident.reviewStatus}
             </span>
           </p>
-          <p>등록일: {resident.registeredAt}</p>
+          <p className="resident-card__info-row">
+            <span className="resident-card__label">등록일</span>
+            <span>{resident.registeredAt}</span>
+          </p>
         </div>
       </button>
     </section>
