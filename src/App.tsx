@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchBox from "./components/SearchBox";
 import StatusFilter from "./components/StatusFilter";
 import AreaFilter from "./components/AreaFilter";
@@ -39,6 +39,10 @@ function App() {
 
   const selectedResident = residents.find(
     (resident) => resident.id === selectedResidentId,
+  );
+
+  const isSelectedResidentVisible = filteredResidents.some(
+    (resident) => resident.id === selectedResidentId, // some : 조건에 맞는 항목이 하나라도 있으면 true 를 반환
   );
 
   // 이벤트 함수
@@ -83,10 +87,13 @@ function App() {
 
       <div className="selected-resident">
         <span>
-          선택된 주민: {selectedResident ? selectedResident.name : "없음"}
+          선택된 주민:{" "}
+          {selectedResident && isSelectedResidentVisible
+            ? selectedResident.name
+            : "없음"}
         </span>
 
-        {selectedResident && (
+        {selectedResident && isSelectedResidentVisible && (
           <button type="button" onClick={handleClearSelectedResident}>
             선택 해제
           </button>
