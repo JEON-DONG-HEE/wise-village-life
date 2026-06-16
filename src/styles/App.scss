@@ -16,11 +16,22 @@
   }
 }
 
+.resident-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 360px));
+  gap: 20px;
+  justify-content: start;
+}
+
+// 주민 카드
 .resident-card {
-  width: 360px;
+  width: 100%;
   border-radius: 16px;
   background-color: #fff;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 
   &__header {
     display: flex;
@@ -39,6 +50,11 @@
       color: #333;
       font-size: 15px;
     }
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
   }
 
   &.is-selected {
