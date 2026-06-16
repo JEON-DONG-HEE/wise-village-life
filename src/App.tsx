@@ -38,10 +38,12 @@ function App() {
     selectedArea !== "전체";
 
   const selectedResident = residents.find(
+    // 화면 표시용 계산값
     (resident) => resident.id === selectedResidentId,
   );
 
   const isSelectedResidentVisible = filteredResidents.some(
+    // 상태 정리용 계산값
     (resident) => resident.id === selectedResidentId, // some : 조건에 맞는 항목이 하나라도 있으면 true 를 반환
   );
 
@@ -93,13 +95,10 @@ function App() {
 
       <div className="selected-resident">
         <span>
-          선택된 주민:{" "}
-          {selectedResident && isSelectedResidentVisible
-            ? selectedResident.name
-            : "없음"}
+          선택된 주민: {selectedResident ? selectedResident.name : "없음"}
         </span>
 
-        {selectedResident && isSelectedResidentVisible && (
+        {selectedResident && (
           <button type="button" onClick={handleClearSelectedResident}>
             선택 해제
           </button>
