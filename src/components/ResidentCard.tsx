@@ -44,6 +44,7 @@ function ResidentCard({
       <button
         type="button"
         className="resident-card__button"
+        aria-pressed={isSelected}
         onClick={() => onSelectResident(resident.id)}
       >
         <div className="resident-card__header">

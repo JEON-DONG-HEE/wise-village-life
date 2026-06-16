@@ -18,6 +18,7 @@ function StatusFilter({ selectedStatus, onChangeStatus }: StatusFilterProps) {
             key={status}
             type="button"
             className={selectedStatus === status ? "is-active" : ""}
+            aria-pressed={selectedStatus === status}
             onClick={() => onChangeStatus(status)}
           >
             {status}

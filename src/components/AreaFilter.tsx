@@ -17,6 +17,7 @@ function AreaFilter({ selectedArea, onChangeArea }: AreaFilterProps) {
             key={area}
             type="button"
             className={selectedArea === area ? "is-active" : ""}
+            aria-pressed={selectedArea === area}
             onClick={() => onChangeArea(area)}
           >
             {area}
