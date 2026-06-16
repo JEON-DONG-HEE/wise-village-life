@@ -40,30 +40,35 @@ function ResidentCard({
   onSelectResident,
 }: ResidentCardProps) {
   return (
-    <section
-      className={`resident-card ${isSelected ? "is-selected" : ""}`}
-      onClick={() => onSelectResident(resident.id)}
-    >
-      <div className="resident-card__header">
-        <h2>{resident.name}</h2>
-        <span className={`status-badge ${getStatusClassName(resident.status)}`}>
-          {resident.status}
-        </span>
-      </div>
-      <div className="resident-card__body">
-        <p>구역: {resident.area}</p>
-        <p>역할: {resident.role}</p>
-        <p>등급: {resident.level}</p>
-        <p>
-          검토상태:{" "}
+    <section className={`resident-card ${isSelected ? "is-selected" : ""}`}>
+      <button
+        type="button"
+        className="resident-card__button"
+        onClick={() => onSelectResident(resident.id)}
+      >
+        <div className="resident-card__header">
+          <h2>{resident.name}</h2>
           <span
-            className={`review-badge ${getReviewClassName(resident.reviewStatus)}`}
+            className={`status-badge ${getStatusClassName(resident.status)}`}
           >
-            {resident.reviewStatus}
+            {resident.status}
           </span>
-        </p>
-        <p>등록일: {resident.registeredAt}</p>
-      </div>
+        </div>
+        <div className="resident-card__body">
+          <p>구역: {resident.area}</p>
+          <p>역할: {resident.role}</p>
+          <p>등급: {resident.level}</p>
+          <p>
+            검토상태:{" "}
+            <span
+              className={`review-badge ${getReviewClassName(resident.reviewStatus)}`}
+            >
+              {resident.reviewStatus}
+            </span>
+          </p>
+          <p>등록일: {resident.registeredAt}</p>
+        </div>
+      </button>
     </section>
   );
 }

@@ -18,7 +18,6 @@
 
 .resident-card {
   width: 360px;
-  padding: 20px;
   border-radius: 16px;
   background-color: #fff;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
@@ -44,6 +43,20 @@
 
   &.is-selected {
     outline: 3px solid #4f7cff;
+  }
+
+  &__button {
+    width: 100%;
+    padding: 20px;
+    border: 0;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+
+    &:focus-visible {
+      outline: 3px solid #4f7cff;
+      outline-offset: 3px;
+    }
   }
 }
 
