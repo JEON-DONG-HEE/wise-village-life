@@ -232,9 +232,28 @@
   }
 }
 
-// 주민 선택 on
+// 선택된 주민
 .selected-resident {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   margin-bottom: 16px;
   color: #555;
   font-size: 14px;
+
+  button {
+    height: 30px;
+    padding: 0 10px;
+    border: 1px solid #d6dbe1;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #555;
+    font-size: 13px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f0f2f5;
+    }
+  }
 }

@@ -14,7 +14,11 @@ function StatusFilter({ selectedStatus, onChangeStatus }: StatusFilterProps) {
         활동 상태
       </p>
 
-      <div className="filter-area" aria-labelledby="status-filter-title">
+      <div
+        className="filter-area"
+        role="group"
+        aria-labelledby="status-filter-title"
+      >
         {statusFilters.map((status) => (
           <button
             key={status}

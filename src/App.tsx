@@ -48,6 +48,10 @@ function App() {
     setSelectedArea("전체");
   };
 
+  const handleClearSelectedResident = () => {
+    setSelectedResidentId(null);
+  };
+
   return (
     <div className="app">
       <header className="page-header">
@@ -78,7 +82,15 @@ function App() {
       />
 
       <div className="selected-resident">
-        선택된 주민: {selectedResident ? selectedResident.name : "없음"}
+        <span>
+          선택된 주민: {selectedResident ? selectedResident.name : "없음"}
+        </span>
+
+        {selectedResident && (
+          <button type="button" onClick={handleClearSelectedResident}>
+            선택 해제
+          </button>
+        )}
       </div>
 
       {filteredResidents.length > 0 ? (
