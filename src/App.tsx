@@ -8,6 +8,10 @@ import FilterSummary from "./components/FilterSummary";
 
 import { residents } from "./data/residents";
 import type { AreaFilterType, FilterStatus } from "./types/resident";
+import {
+  getReviewClassName,
+  getStatusClassName,
+} from "./utils/residentClassName";
 import "./styles/App.scss";
 
 function App() {
@@ -124,11 +128,19 @@ function App() {
             </p>
             <p className="selected-resident__info-row">
               <span className="selected-resident__label">상태</span>
-              <span>{selectedResident.status}</span>
+              <span
+                className={`status-badge ${getStatusClassName(selectedResident.status)}`}
+              >
+                {selectedResident.status}
+              </span>
             </p>
             <p className="selected-resident__info-row">
               <span className="selected-resident__label">검토상태</span>
-              <span>{selectedResident.reviewStatus}</span>
+              <span
+                className={`review-badge ${getReviewClassName(selectedResident.reviewStatus)}`}
+              >
+                {selectedResident.reviewStatus}
+              </span>
             </p>
             <p className="selected-resident__info-row">
               <span className="selected-resident__label">등록일</span>
