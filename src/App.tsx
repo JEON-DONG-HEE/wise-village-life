@@ -5,6 +5,7 @@ import AreaFilter from "./components/AreaFilter";
 import EmptyMessage from "./components/EmptyMessage";
 import ResidentList from "./components/ResidentList";
 import FilterSummary from "./components/FilterSummary";
+import SeletedResidentPanel from "./components/SeletedResidentPanel";
 
 import { residents } from "./data/residents";
 import type { AreaFilterType, FilterStatus } from "./types/resident";
@@ -97,7 +98,9 @@ function App() {
         onResetFilters={handleResetFilters}
       />
 
-      <div className="selected-resident">
+      <SeletedResidentPanel />
+
+      {/* <div className="selected-resident">
         <div className="selected-resident__header">
           <strong>선택된 주민</strong>
 
@@ -148,7 +151,7 @@ function App() {
             </p>
           </div>
         )}
-      </div>
+      </div> */}
 
       {filteredResidents.length > 0 ? (
         <ResidentList
