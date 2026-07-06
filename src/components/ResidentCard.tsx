@@ -1,37 +1,13 @@
-import type { Resident, ResidentStatus, ReviewStatus } from "../types/resident";
+import type { Resident } from "../types/resident";
+import {
+  getReviewClassName,
+  getStatusClassName,
+} from "../utils/residentClassName";
 
 type ResidentCardProps = {
   resident: Resident;
   isSelected: boolean;
   onSelectResident: (residentId: number) => void;
-};
-
-const getStatusClassName = (status: ResidentStatus) => {
-  if (status === "활동중") {
-    return "status-badge--active";
-  }
-  if (status === "휴식중") {
-    return "status-badge--rest";
-  }
-  if (status === "대기중") {
-    return "status-badge--waiting";
-  }
-
-  return "";
-};
-
-const getReviewClassName = (reviewStatus: ReviewStatus) => {
-  if (reviewStatus === "확인대기") {
-    return "review-badge--pending";
-  }
-  if (reviewStatus === "확인완료") {
-    return "review-badge--complete";
-  }
-  if (reviewStatus === "반려") {
-    return "review-badge--rejected";
-  }
-
-  return "";
 };
 
 function ResidentCard({
