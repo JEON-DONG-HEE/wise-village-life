@@ -72,7 +72,7 @@ function App() {
       </header>
 
       <div className="control-panel">
-        <SearchBox keyword={keyword} onChangekeyword={setKeyword} />
+        <SearchBox keyword={keyword} onChangeKeyword={setKeyword} />
         <StatusFilter
           selectedStatus={selectedStatus}
           onChangeStatus={setSelectedStatus}
@@ -114,9 +114,26 @@ function App() {
 
         {selectedResident && (
           <div className="selected-resident__detail">
-            <p>구역 : {selectedResident.area}</p>
-            <p>역할 : {selectedResident.role}</p>
-            <p>상태 : {selectedResident.status}</p>
+            <p className="selected-resident__info-row">
+              <span className="selected-resident__label">구역</span>
+              <span>{selectedResident.area}</span>
+            </p>
+            <p className="selected-resident__info-row">
+              <span className="selected-resident__label">역할</span>
+              <span>{selectedResident.role}</span>
+            </p>
+            <p className="selected-resident__info-row">
+              <span className="selected-resident__label">상태</span>
+              <span>{selectedResident.status}</span>
+            </p>
+            <p className="selected-resident__info-row">
+              <span className="selected-resident__label">검토상태</span>
+              <span>{selectedResident.reviewStatus}</span>
+            </p>
+            <p className="selected-resident__info-row">
+              <span className="selected-resident__label">등록일</span>
+              <span>{selectedResident.registeredAt}</span>
+            </p>
           </div>
         )}
       </div>

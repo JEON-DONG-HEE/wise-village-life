@@ -1,9 +1,9 @@
 type SearchBoxProps = {
   keyword: string;
-  onChangekeyword: (value: string) => void;
+  onChangeKeyword: (value: string) => void;
 };
 
-function SearchBox({ keyword, onChangekeyword }: SearchBoxProps) {
+function SearchBox({ keyword, onChangeKeyword }: SearchBoxProps) {
   return (
     <div className="search-area">
       <label htmlFor="resident-search">주민명 검색</label>
@@ -12,7 +12,7 @@ function SearchBox({ keyword, onChangekeyword }: SearchBoxProps) {
         type="text"
         placeholder="주민명을 검색하세요"
         value={keyword}
-        onChange={(event) => onChangekeyword(event.target.value)}
+        onChange={(event) => onChangeKeyword(event.target.value)}
       />
     </div>
   );

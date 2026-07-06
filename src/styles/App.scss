@@ -177,6 +177,21 @@
     gap: 6px;
   }
 
+  &__info-row {
+    display: flex;
+    gap: 8px;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  &__label {
+    flex-shrink: 0;
+    width: 64px;
+    color: #777;
+    font-weight: 600;
+  }
+
   &__empty {
     color: #777;
     font-size: 14px;
