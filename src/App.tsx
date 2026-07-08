@@ -35,6 +35,14 @@ function App() {
     return isMatchedKeyword && isMatchedStatus && isMatchedArea;
   });
 
+  const sortedResidents = [...filteredResidents].sort((a, b) => {
+    if (sortOrder === "latest") {
+      return b.registeredAt.localeCompare(a.registeredAt);
+    }
+
+    return a.registeredAt.localeCompare(b.registeredAt);
+  });
+
   const isFiltered =
     trimmedKeyword !== "" ||
     selectedStatus !== "전체" ||
@@ -104,9 +112,9 @@ function App() {
         onClearSelectedResident={handleClearSelectedResident}
       />
 
-      {filteredResidents.length > 0 ? (
+      {sortedResidents.length > 0 ? (
         <ResidentList
-          residents={filteredResidents}
+          residents={sortedResidents}
           selectedResidentId={selectedResidentId}
           onSelectResident={setSelectedResidentId}
         />
