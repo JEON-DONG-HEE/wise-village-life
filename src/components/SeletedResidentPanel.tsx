@@ -5,7 +5,7 @@ import {
 } from "../utils/residentClassName";
 
 type SelectedResidentPanelProps = {
-  selectedResident: Resident | undefined;
+  selectedResident: Resident | null;
   onClearSelectedResident: () => void;
 };
 

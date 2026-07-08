@@ -9,10 +9,6 @@ import SeletedResidentPanel from "./components/SeletedResidentPanel";
 
 import { residents } from "./data/residents";
 import type { AreaFilterType, FilterStatus } from "./types/resident";
-import {
-  getReviewClassName,
-  getStatusClassName,
-} from "./utils/residentClassName";
 import "./styles/App.scss";
 
 function App() {
@@ -42,10 +38,11 @@ function App() {
     selectedStatus !== "전체" ||
     selectedArea !== "전체";
 
-  const selectedResident = residents.find(
-    // 화면 표시용 계산값
-    (resident) => resident.id === selectedResidentId,
-  );
+  const selectedResident =
+    residents.find(
+      // 화면 표시용 계산값
+      (resident) => resident.id === selectedResidentId,
+    ) ?? null;
 
   const isSelectedResidentVisible = filteredResidents.some(
     // 상태 정리용 계산값
