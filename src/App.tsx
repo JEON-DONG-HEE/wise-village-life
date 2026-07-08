@@ -8,7 +8,7 @@ import FilterSummary from "./components/FilterSummary";
 import SeletedResidentPanel from "./components/SeletedResidentPanel";
 
 import { residents } from "./data/residents";
-import type { AreaFilterType, FilterStatus } from "./types/resident";
+import type { AreaFilterType, FilterStatus, SortOrder } from "./types/resident";
 import "./styles/App.scss";
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
   const [keyword, setKeyword] = useState("");
   const [selectedStatus, setSelectedStatus] = useState<FilterStatus>("전체");
   const [selectedArea, setSelectedArea] = useState<AreaFilterType>("전체");
+  const [sortOrder, setSortOrder] = useState<SortOrder>("latest");
   const [selectedResidentId, setSelectedResidentId] = useState<number | null>(
     null,
   );
