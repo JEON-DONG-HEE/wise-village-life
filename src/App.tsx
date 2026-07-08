@@ -86,7 +86,7 @@ function App() {
           onChangeArea={setSelectedArea}
         />
 
-        <SortButtons />
+        <SortButtons sortOrder={sortOrder} onChangeSortOrder={setSortOrder} />
       </div>
 
       <FilterSummary
