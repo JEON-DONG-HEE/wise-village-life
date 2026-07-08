@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import SearchBox from "./components/SearchBox";
 import StatusFilter from "./components/StatusFilter";
 import AreaFilter from "./components/AreaFilter";
+import SortButtons from "./components/SortButtons";
 import EmptyMessage from "./components/EmptyMessage";
 import ResidentList from "./components/ResidentList";
 import FilterSummary from "./components/FilterSummary";
@@ -84,6 +85,8 @@ function App() {
           selectedArea={selectedArea}
           onChangeArea={setSelectedArea}
         />
+
+        <SortButtons />
       </div>
 
       <FilterSummary
