@@ -1,4 +1,8 @@
-import type { AreaFilterType, FilterStatus } from "../types/resident";
+import type {
+  AreaFilterType,
+  FilterStatus,
+  SortOrder,
+} from "../types/resident";
 
 type FilterSummaryProps = {
   totalCount: number;
@@ -6,6 +10,7 @@ type FilterSummaryProps = {
   keyword: string;
   selectedStatus: FilterStatus;
   selectedArea: AreaFilterType;
+  sortOrder: SortOrder;
   isFiltered: boolean;
   onResetFilters: () => void;
 };
@@ -16,9 +21,13 @@ function FilterSummary({
   keyword,
   selectedStatus,
   selectedArea,
+  sortOrder,
   isFiltered,
   onResetFilters,
 }: FilterSummaryProps) {
+  const sortOrderLabel =
+    sortOrder === "latest" ? "최신 등록순" : "오래된 등록순";
+
   return (
     <div className="filter-summary-box">
       <div className="result-summary">
@@ -27,7 +36,7 @@ function FilterSummary({
 
       <div className="filter-summary">
         검색어: {keyword || "없음"} / 상태: {selectedStatus} / 구역:{" "}
-        {selectedArea}
+        {selectedArea} / 정렬: {sortOrderLabel}
       </div>
 
       {isFiltered && (

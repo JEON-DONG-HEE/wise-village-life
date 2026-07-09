@@ -46,7 +46,8 @@ function App() {
   const isFiltered =
     trimmedKeyword !== "" ||
     selectedStatus !== "전체" ||
-    selectedArea !== "전체";
+    selectedArea !== "전체" ||
+    sortOrder !== "latest";
 
   const selectedResident =
     residents.find(
@@ -70,6 +71,7 @@ function App() {
     setKeyword("");
     setSelectedStatus("전체");
     setSelectedArea("전체");
+    setSortOrder("latest");
   };
 
   const handleClearSelectedResident = () => {
@@ -103,6 +105,7 @@ function App() {
         keyword={trimmedKeyword}
         selectedStatus={selectedStatus}
         selectedArea={selectedArea}
+        sortOrder={sortOrder}
         isFiltered={isFiltered}
         onResetFilters={handleResetFilters}
       />
