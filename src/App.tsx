@@ -10,6 +10,7 @@ import SeletedResidentPanel from "./components/SeletedResidentPanel";
 
 import { residents } from "./data/residents";
 import type { AreaFilterType, FilterStatus, SortOrder } from "./types/resident";
+import { sortResidentsByRegisteredAt } from "./utils/residentSort";
 import "./styles/App.scss";
 
 function App() {
@@ -35,13 +36,10 @@ function App() {
     return isMatchedKeyword && isMatchedStatus && isMatchedArea;
   });
 
-  const sortedResidents = [...filteredResidents].sort((a, b) => {
-    if (sortOrder === "latest") {
-      return b.registeredAt.localeCompare(a.registeredAt);
-    }
-
-    return a.registeredAt.localeCompare(b.registeredAt);
-  });
+  const sortedResidents = sortResidentsByRegisteredAt(
+    filteredResidents,
+    sortOrder,
+  );
 
   const isFiltered =
     trimmedKeyword !== "" ||
