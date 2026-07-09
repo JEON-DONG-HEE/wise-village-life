@@ -3,6 +3,7 @@ import type {
   FilterStatus,
   SortOrder,
 } from "../types/resident";
+import { getSortOrderLabel } from "../utils/sortLabel";
 
 type FilterSummaryProps = {
   totalCount: number;
@@ -25,8 +26,7 @@ function FilterSummary({
   isFiltered,
   onResetFilters,
 }: FilterSummaryProps) {
-  const sortOrderLabel =
-    sortOrder === "latest" ? "최신 등록순" : "오래된 등록순";
+  const sortOrderLabel = getSortOrderLabel(sortOrder);
 
   return (
     <div className="filter-summary-box">
