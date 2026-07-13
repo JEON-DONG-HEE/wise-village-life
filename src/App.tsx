@@ -10,6 +10,7 @@ import SeletedResidentPanel from "./components/SeletedResidentPanel";
 
 import { residents } from "./data/residents";
 import type { AreaFilterType, FilterStatus, SortOrder } from "./types/resident";
+import { filterResidents } from "./utils/residentsFilter";
 import { sortResidentsByRegisteredAt } from "./utils/residentSort";
 import "./styles/App.scss";
 
@@ -25,15 +26,10 @@ function App() {
 
   // 필터 계산
   const trimmedKeyword = keyword.trim(); // 검색어에 공백만 있을 경우 예외처리
-
-  const filteredResidents = residents.filter((resident) => {
-    const isMatchedKeyword = resident.name.includes(trimmedKeyword);
-    const isMatchedStatus =
-      selectedStatus === "전체" || resident.status === selectedStatus;
-    const isMatchedArea =
-      selectedArea === "전체" || resident.area === selectedArea;
-
-    return isMatchedKeyword && isMatchedStatus && isMatchedArea;
+  const filteredResidents = filterResidents(residents, {
+    keyword: trimmedKeyword,
+    selectedStatus,
+    selectedArea,
   });
 
   const sortedResidents = sortResidentsByRegisteredAt(
