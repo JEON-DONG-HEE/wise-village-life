@@ -109,6 +109,10 @@ function App() {
         onClearSelectedResident={handleClearSelectedResident}
       />
 
+      <div className="resident-form">
+        <h2>새 주민 등록</h2>
+      </div>
+
       {sortedResidents.length > 0 ? (
         <ResidentList
           residents={sortedResidents}
