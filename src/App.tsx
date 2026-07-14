@@ -7,6 +7,7 @@ import EmptyMessage from "./components/EmptyMessage";
 import ResidentList from "./components/ResidentList";
 import FilterSummary from "./components/FilterSummary";
 import SeletedResidentPanel from "./components/SeletedResidentPanel";
+import ResidentForm from "./components/ResidentForm";
 
 import { residents } from "./data/residents";
 import type { AreaFilterType, FilterStatus, SortOrder } from "./types/resident";
@@ -109,9 +110,7 @@ function App() {
         onClearSelectedResident={handleClearSelectedResident}
       />
 
-      <div className="resident-form">
-        <h2>새 주민 등록</h2>
-      </div>
+      <ResidentForm />
 
       {sortedResidents.length > 0 ? (
         <ResidentList
