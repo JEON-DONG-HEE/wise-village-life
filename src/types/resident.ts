@@ -10,12 +10,14 @@ export type AreaFilterType = "전체" | Area;
 
 export type SortOrder = "latest" | "oldest";
 
+export type ResidentLevel = "초급" | "일반" | "숙련";
+
 export type Resident = {
   id: number; // 목록을 만들 때는 각 데이터마다 고유값이 필요함, map() 으로 반복 출력할 때 필요함
   name: string;
   area: Area;
   role: string;
-  level: string;
+  level: ResidentLevel;
   status: ResidentStatus;
   reviewStatus: ReviewStatus;
   registeredAt: string;
