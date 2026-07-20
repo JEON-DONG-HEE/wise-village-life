@@ -20,9 +20,16 @@ function ResidentForm({ residents }: ResidentFormProps) {
   const [reviewStatus, setReviewStatus] = useState<ReviewStatus>("확인대기");
 
   const handleSubmit = () => {
+    // 아이디 생성규칙
     const residentIds = residents.map((resident) => resident.id);
     const maxId = Math.max(...residentIds);
     const newId = maxId + 1;
+
+    // 날짜 생성규칙
+    const today = new Date();
+    const registeredAt = today.toISOString().slice(0, 10);
+
+    console.log(registeredAt);
 
     const newResident: Resident = {
       id: newId,
@@ -32,7 +39,7 @@ function ResidentForm({ residents }: ResidentFormProps) {
       status,
       level,
       reviewStatus,
-      registeredAt: "2026-07-20",
+      registeredAt: registeredAt,
     };
 
     console.log(newResident);
