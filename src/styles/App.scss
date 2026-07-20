@@ -384,4 +384,21 @@
     color: #666;
     font-size: 14px;
   }
+
+  &__submit-button {
+    height: 40px;
+    margin-top: 16px;
+    padding: 0 18px;
+    border: 0;
+    border-radius: 10px;
+    background-color: #4f7cff;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #3d68e8;
+    }
+  }
 }

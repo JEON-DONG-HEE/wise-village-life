@@ -14,6 +14,10 @@ function ResidentForm() {
   const [level, setLevel] = useState<ResidentLevel>("초급");
   const [reviewStatus, setReviewStatus] = useState<ReviewStatus>("확인대기");
 
+  const handleSubmit = () => {
+    console.log({ name, role, area, status, level, reviewStatus });
+  };
+
   return (
     <div className="resident-form">
       <h2>새 주민 등록</h2>
@@ -94,6 +98,14 @@ function ResidentForm() {
         <p>선택한 숙련도: {level}</p>
         <p>선택한 검토상태: {reviewStatus}</p>
       </div>
+
+      <button
+        type="button"
+        className="resident-form__submit-button"
+        onClick={handleSubmit}
+      >
+        주민 등록
+      </button>
     </div>
   );
 }
