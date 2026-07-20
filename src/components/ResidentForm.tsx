@@ -1,12 +1,17 @@
 import { useState } from "react";
 import type {
   Area,
+  Resident,
   ResidentLevel,
   ResidentStatus,
   ReviewStatus,
 } from "../types/resident";
 
-function ResidentForm() {
+type ResidentFormProps = {
+  residents: Resident[];
+};
+
+function ResidentForm({ residents }: ResidentFormProps) {
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
   const [area, setArea] = useState<Area>("동쪽 마을");
@@ -15,7 +20,22 @@ function ResidentForm() {
   const [reviewStatus, setReviewStatus] = useState<ReviewStatus>("확인대기");
 
   const handleSubmit = () => {
-    console.log({ name, role, area, status, level, reviewStatus });
+    const residentIds = residents.map((resident) => resident.id);
+    const maxId = Math.max(...residentIds);
+    const newId = maxId + 1;
+
+    const newResident: Resident = {
+      id: newId,
+      name,
+      role,
+      area,
+      status,
+      level,
+      reviewStatus,
+      registeredAt: "2026-07-20",
+    };
+
+    console.log(newResident);
   };
 
   return (

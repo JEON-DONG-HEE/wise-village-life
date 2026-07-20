@@ -110,7 +110,7 @@ function App() {
         onClearSelectedResident={handleClearSelectedResident}
       />
 
-      <ResidentForm />
+      <ResidentForm residents={residents} />
 
       {sortedResidents.length > 0 ? (
         <ResidentList
