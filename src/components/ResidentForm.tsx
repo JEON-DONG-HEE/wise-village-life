@@ -56,6 +56,16 @@ function ResidentForm({ residents, onAddResident }: ResidentFormProps) {
     };
 
     onAddResident(newResident);
+    resetForm();
+  };
+
+  const resetForm = () => {
+    setName("");
+    setRole("");
+    setArea("동쪽 마을");
+    setStatus("활동중");
+    setLevel("초급");
+    setReviewStatus("확인대기");
   };
 
   return (
