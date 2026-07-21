@@ -9,14 +9,20 @@ import FilterSummary from "./components/FilterSummary";
 import SeletedResidentPanel from "./components/SeletedResidentPanel";
 import ResidentForm from "./components/ResidentForm";
 
-import { residents } from "./data/residents";
-import type { AreaFilterType, FilterStatus, SortOrder } from "./types/resident";
+import { residents as initialResidents } from "./data/residents";
+import type {
+  AreaFilterType,
+  FilterStatus,
+  Resident,
+  SortOrder,
+} from "./types/resident";
 import { filterResidents } from "./utils/residentsFilter";
 import { sortResidentsByRegisteredAt } from "./utils/residentSort";
 import "./styles/App.scss";
 
 function App() {
   // 상태값
+  const [residents, setResidents] = useState<Resident[]>(initialResidents);
   const [keyword, setKeyword] = useState("");
   const [selectedStatus, setSelectedStatus] = useState<FilterStatus>("전체");
   const [selectedArea, setSelectedArea] = useState<AreaFilterType>("전체");
@@ -73,6 +79,10 @@ function App() {
     setSelectedResidentId(null);
   };
 
+  const handleAddResident = (resident: Resident) => {
+    setResidents([...residents, resident]);
+  };
+
   return (
     <div className="app">
       <header className="page-header">
@@ -110,7 +120,7 @@ function App() {
         onClearSelectedResident={handleClearSelectedResident}
       />
 
-      <ResidentForm residents={residents} />
+      <ResidentForm residents={residents} onAddResident={handleAddResident} />
 
       {sortedResidents.length > 0 ? (
         <ResidentList

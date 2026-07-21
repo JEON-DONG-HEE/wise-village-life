@@ -9,9 +9,30 @@ import type {
 
 type ResidentFormProps = {
   residents: Resident[];
+  onAddResident: (resident: Resident) => void;
 };
 
-function ResidentForm({ residents }: ResidentFormProps) {
+// 아이디 생성규칙
+const getNextResidentId = (residents: Resident[]) => {
+  if (residents.length === 0) {
+    return 1;
+  }
+
+  const residentIds = residents.map((resident) => resident.id);
+  const maxId = Math.max(...residentIds);
+
+  return maxId + 1;
+};
+
+// 날짜 생성규칙
+// 컴포넌트 상태와 상관없는 순수 계산 함수 -> 컴포넌트 바깥에 둬도 됨
+const getTodayDateString = () => {
+  const today = new Date();
+
+  return today.toISOString().slice(0, 10);
+};
+
+function ResidentForm({ residents, onAddResident }: ResidentFormProps) {
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
   const [area, setArea] = useState<Area>("동쪽 마을");
@@ -20,16 +41,8 @@ function ResidentForm({ residents }: ResidentFormProps) {
   const [reviewStatus, setReviewStatus] = useState<ReviewStatus>("확인대기");
 
   const handleSubmit = () => {
-    // 아이디 생성규칙
-    const residentIds = residents.map((resident) => resident.id);
-    const maxId = Math.max(...residentIds);
-    const newId = maxId + 1;
-
-    // 날짜 생성규칙
-    const today = new Date();
-    const registeredAt = today.toISOString().slice(0, 10);
-
-    console.log(registeredAt);
+    const newId = getNextResidentId(residents);
+    const registeredAt = getTodayDateString();
 
     const newResident: Resident = {
       id: newId,
@@ -42,7 +55,7 @@ function ResidentForm({ residents }: ResidentFormProps) {
       registeredAt: registeredAt,
     };
 
-    console.log(newResident);
+    onAddResident(newResident);
   };
 
   return (
