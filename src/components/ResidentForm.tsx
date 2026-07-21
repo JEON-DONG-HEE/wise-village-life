@@ -42,21 +42,25 @@ function ResidentForm({ residents, onAddResident }: ResidentFormProps) {
 
   //유효성 검사 관련
   const [errorMessage, setErrorMessage] = useState("");
+  const [errorField, setErrorField] = useState<"name" | "role" | "">("");
 
   const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (name.trim() === "") {
       setErrorMessage("이름을 입력해주세요.");
+      setErrorField("name");
       return;
     }
 
     if (role.trim() === "") {
       setErrorMessage("역할을 입력해주세요.");
+      setErrorField("role");
       return;
     }
 
     setErrorMessage("");
+    setErrorField("");
 
     const newId = getNextResidentId(residents);
     const registeredAt = getTodayDateString();
@@ -83,6 +87,8 @@ function ResidentForm({ residents, onAddResident }: ResidentFormProps) {
     setStatus("활동중");
     setLevel("초급");
     setReviewStatus("확인대기");
+    setErrorMessage("");
+    setErrorField("");
   };
 
   return (
@@ -96,6 +102,11 @@ function ResidentForm({ residents, onAddResident }: ResidentFormProps) {
           type="text"
           value={name}
           onChange={(event) => setName(event.target.value)}
+          className={errorField === "name" ? "is-error" : ""}
+          aria-invalid={errorField === "name"}
+          aria-describedby={
+            errorField === "name" ? "resident-form-error" : undefined
+          }
         />
       </div>
       <div className="resident-form__field">
@@ -105,6 +116,11 @@ function ResidentForm({ residents, onAddResident }: ResidentFormProps) {
           type="text"
           value={role}
           onChange={(event) => setRole(event.target.value)}
+          className={errorField === "role" ? "is-error" : ""}
+          aria-invalid={errorField === "role"}
+          aria-describedby={
+            errorField === "role" ? "resident-form-error" : undefined
+          }
         />
       </div>
       <div className="resident-form__field">
@@ -166,7 +182,11 @@ function ResidentForm({ residents, onAddResident }: ResidentFormProps) {
         <p>선택한 검토상태: {reviewStatus}</p>
       </div>
 
-      {errorMessage && <p className="resident-form__error">{errorMessage}</p>}
+      {errorMessage && (
+        <p id="resident-form-error" className="resident-form__error">
+          {errorMessage}
+        </p>
+      )}
 
       <button type="submit" className="resident-form__submit-button">
         주민 등록
