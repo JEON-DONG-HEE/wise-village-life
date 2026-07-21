@@ -43,7 +43,9 @@ function ResidentForm({ residents, onAddResident }: ResidentFormProps) {
   //유효성 검사 관련
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = () => {
+  const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
     if (name.trim() === "") {
       setErrorMessage("이름을 입력해주세요.");
       return;
@@ -84,7 +86,7 @@ function ResidentForm({ residents, onAddResident }: ResidentFormProps) {
   };
 
   return (
-    <div className="resident-form">
+    <form className="resident-form" onSubmit={handleSubmit}>
       <h2>새 주민 등록</h2>
 
       <div className="resident-form__field">
@@ -166,14 +168,10 @@ function ResidentForm({ residents, onAddResident }: ResidentFormProps) {
 
       {errorMessage && <p className="resident-form__error">{errorMessage}</p>}
 
-      <button
-        type="button"
-        className="resident-form__submit-button"
-        onClick={handleSubmit}
-      >
+      <button type="submit" className="resident-form__submit-button">
         주민 등록
       </button>
-    </div>
+    </form>
   );
 }
 
