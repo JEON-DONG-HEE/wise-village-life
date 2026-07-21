@@ -40,16 +40,21 @@ function ResidentForm({ residents, onAddResident }: ResidentFormProps) {
   const [level, setLevel] = useState<ResidentLevel>("초급");
   const [reviewStatus, setReviewStatus] = useState<ReviewStatus>("확인대기");
 
+  //유효성 검사 관련
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleSubmit = () => {
     if (name.trim() === "") {
-      alert("이름을 입력해주세요.");
+      setErrorMessage("이름을 입력해주세요.");
       return;
     }
 
     if (role.trim() === "") {
-      alert("역할을 입력해주세요.");
+      setErrorMessage("역할을 입력해주세요.");
       return;
     }
+
+    setErrorMessage("");
 
     const newId = getNextResidentId(residents);
     const registeredAt = getTodayDateString();
@@ -158,6 +163,8 @@ function ResidentForm({ residents, onAddResident }: ResidentFormProps) {
         <p>선택한 숙련도: {level}</p>
         <p>선택한 검토상태: {reviewStatus}</p>
       </div>
+
+      {errorMessage && <p className="resident-form__error">{errorMessage}</p>}
 
       <button
         type="button"

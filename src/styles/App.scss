@@ -401,4 +401,11 @@
       background-color: #3d68e8;
     }
   }
+
+  &__error {
+    margin-top: 12px;
+    color: #c62828;
+    font-size: 14px;
+    font-weight: 600;
+  }
 }
