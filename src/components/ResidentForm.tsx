@@ -41,13 +41,23 @@ function ResidentForm({ residents, onAddResident }: ResidentFormProps) {
   const [reviewStatus, setReviewStatus] = useState<ReviewStatus>("확인대기");
 
   const handleSubmit = () => {
+    if (name.trim() === "") {
+      alert("이름을 입력해주세요.");
+      return;
+    }
+
+    if (role.trim() === "") {
+      alert("역할을 입력해주세요.");
+      return;
+    }
+
     const newId = getNextResidentId(residents);
     const registeredAt = getTodayDateString();
 
     const newResident: Resident = {
       id: newId,
-      name,
-      role,
+      name: name.trim(),
+      role: role.trim(),
       area,
       status,
       level,
